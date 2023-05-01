@@ -1,9 +1,24 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
-
+  require 'pry'
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    if logged_in?
+      @tasks = Task.all
+      if params[:owner] == "1"
+        @tasks = @tasks.select{ |t| t.user_id == current_user.id }
+      end
+
+      if params[:sort] == "1"
+        @tasks = @tasks.sort{|a, b| a.expiration_date <=> b.expiration_date }
+      end
+      if params[:sort] == "2"
+        @tasks = @tasks.sort{|a, b| a.expiration_date <=> b.expiration_date }.reverse
+      end
+
+    else
+      redirect_to login_path
+    end
   end
 
   # GET /tasks/1 or /tasks/1.json
