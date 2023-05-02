@@ -37,3 +37,4 @@
 # Ignore bundle installed files.
 /Gemfile.lock
 /vendor/bundle
+/.bundle

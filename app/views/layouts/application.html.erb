@@ -10,20 +10,14 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
+    <header>
+      <div class="login_menu">
         <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <% if logged_in? %>
-              <li>
-                <%= button_to "Log out", logout_path, method: :delete %>
-              </li>
-            <% else %>
-              <li>
-                <%= button_to "Log in", login_path, method: :get %>
-              </li>
-            <% end %>
-          </ul>
+          <% if logged_in? %>
+            <%= button_to "Log out", logout_path, method: :delete %>
+          <% else %>
+            <%= button_to "Log in", login_path, method: :get %>
+          <% end %>
         </nav>
       </div>
     </header>
