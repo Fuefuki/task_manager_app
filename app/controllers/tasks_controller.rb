@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
-  require 'pry'
   # GET /tasks or /tasks.json
   def index
     if logged_in?
