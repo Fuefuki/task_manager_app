@@ -3,6 +3,7 @@
 <h1>Tasks</h1>
 
 <div id="tasks">
+  <%= paginate @tasks %>
   <% @tasks.each do |task| %>
     <%= render task %>
     <p>

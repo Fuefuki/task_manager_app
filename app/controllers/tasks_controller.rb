@@ -14,7 +14,7 @@ class TasksController < ApplicationController
       if params[:sort] == "2"
         @tasks = @tasks.sort{|a, b| a.expiration_date <=> b.expiration_date }.reverse
       end
-
+      @tasks = @tasks.page(params[:page]).per(3)
     else
       redirect_to login_path
     end
