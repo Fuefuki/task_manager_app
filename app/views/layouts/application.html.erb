@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TaskManagerApp</title>
+    <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <header>
+      <div class="login_menu">
+        <nav>
+          <% if logged_in? %>
+            <%= button_to "Log out", logout_path, method: :delete %>
+          <% else %>
+            <%= button_to "Log in", login_path, method: :get %>
+          <% end %>
+        </nav>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
